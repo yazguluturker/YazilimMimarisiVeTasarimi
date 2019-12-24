@@ -35,7 +35,7 @@ Bunu talebi oluşturacak ve deseni kullanacak katman olarak tanımlayabiliriz.
 Örneğimizde amacımız bir oyun  projesinde  oyunlarımızı prototip tasarım desenini  uygulayarak  üretmektir
 <br/>
 <br/>
-#C#
+'''Csharp
 class Oyun
 {
     public int OyunID { get; set; }
@@ -50,7 +50,7 @@ class Oyun
         this.Durum = Durum;
     }
 }
-#C#
+'''
 <br/>
 <br/>
 Gördüğünüz gibi yukarıda “Oyun” sınıfımızı tanımlamış bulunmaktayız ve bu sınıftan parametreli constructer ile nesne yaratılmaktadır. İşte maliyetten bahsettiğimiz durum budur ki, ben bir “Oyun” nesnesi yaratmaya çalıştığımda new Oyun(3,”Oyun Adı”,”Oyun Türü”,true) gibi bir parametrik kod zorunluluğu getirmektedir. Haliyle kodsal maliyet bu sınıfın new keywordü ile nesne üretiminde arttırılmıştır.
