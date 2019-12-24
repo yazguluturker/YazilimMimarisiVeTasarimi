@@ -3,6 +3,7 @@ Prototip Tasarım Deseni
 <br/>
 <br/>
 Merhaba,
+<br/>
 Bu yazımda Creational Patterns(Oluşturucu Kalıplar) kategorisine giren Prototype Design Pattern üzerine konuşacağım.
 Tasarım deseni yaklaşımlarından Prototype Design Pattern sayesinde elimizdeki mevcut nesnelerin prototiplerini oluşturabilmekte, birnevi bu nesnelerin kopyalarını elde edebilmekteyiz. Prototip deseninin tasarlanmasının asıl sebebi, ilgili nesne üzerinden aynı tipte başka bir nesneyi hızlıca üretebilmektir. Haliyle üretimi esnasında maliyetli olabilecek nesneleri(ki burada maliyetten kasıt, parametreli constructer vs. olabilir) var olan nesne üzerinden “new” anahtar sözcüğünü kullanmadan bir şekilde oluşturulmasını sağlayabilmektedir.
 
@@ -15,11 +16,9 @@ Prototip Tasarım Deseni uygularken aşağıdaki diyagram mantığında hareket 
 <br/>
 <br/>
 <br/>
-<br/>
-
-<br/>
 
 ![proxy](https://user-images.githubusercontent.com/34074096/71422223-2a4ca180-2691-11ea-9caf-1dac9e2720b5.png)
+<br/>
 <br/>
 <br/>
 Yukarıdaki diyagramda Prototip bir abstract class yahut interface yapısı olabilir. İçerisinde kendisinden miras alınan sınıfa zorla uygulatacağı Clone metodu mevcuttur. İlgili abstract class veya interface yapımızdan türeyecek olan sınıflarımızdaki Clone metodu sayesinde maliyetsiz bir üretim gerçekleştirebileceğiz.
