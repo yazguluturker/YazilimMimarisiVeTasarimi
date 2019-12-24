@@ -8,5 +8,12 @@ Tasarım deseni yaklaşımlarından Prototype Design Pattern sayesinde elimizdek
 Biliyoruz ki, Shallow Copy ve Deep Copy olmak üzere iki tür nesne kopyalama işlemi mevcuttur. Shallow Copy ile nesnelerin bellekteki adresleri kopyalanmakta dolayısıyla yüzeysel olarak bir kopyalama işlemi gerçekleştirileceği için yeni bir nesne üretilmemekte, var olan nesne üzerine referanslar ile işaretleme yapılmaktadır. Anlayacağınız Shallow Copy, Prototip Tasarım Deseni için uygun tercih olmayacaktır.
 Lakin Deep Copy ile nesneler birebir kopyalanabilmekte ve bu kopya sonucu ile asıl nesne farklı referanslar ile işaretlenebilmektedir. İşte Prototip Tasarım Desenin’de bu kopyalama yaklaşımında bulunmak en doğrusudur.
 Prototip Tasarım Deseni uygularken aşağıdaki diyagram mantığında hareket etmekteyiz.
+Prototip Tasarım Deseni uygularken aşağıdaki diyagram mantığında hareket etmekteyiz.
+Prototip Tasarım Deseni uygularken aşağıdaki diyagram mantığında hareket etmekteyiz.
+<br/>
+<br/>
+<br/>
+<br/>
+
 <br/>
 ![proxy](https://user-images.githubusercontent.com/34074096/71422223-2a4ca180-2691-11ea-9caf-1dac9e2720b5.png)
