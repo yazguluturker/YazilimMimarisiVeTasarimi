@@ -137,7 +137,7 @@ Strateji Tasarım Deseninin Class Diyagramı  aşağıdaki gibidir
      <br/>
      
      
-https://github.com/yazguluturker/YazilimMimarisiVeTasarimi/blob/master/strateji.png
+
      
      Şimdi yukarda ki class diyagramını baz alarak bir örnek vererek kodlarla daha iyi anlatmaya çalışağım strateji tasarım deseni
 Diyagramda da gördüğünüz gibi bir işlemi gerçekleştirebilmenin “StrategyA”, “StrategyB” ve “StrategyC” isimli üç adet yöntemi mevcuttur. İşlemimizi temsil eden Context sınıfı ise aşağı satırlardaki mantıkla Strateji Tasarım Desenini uygulatma gereksinimi doğurmaktadır.
@@ -308,21 +308,3 @@ static void Main(string[] args)
 
 '''
      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
