@@ -1,5 +1,7 @@
 # YazilimMimarisiVeTasarimi
 Prototip Tasarım Deseni
+<br/>
+<br/>
 Merhaba,
 Bu yazımda Creational Patterns(Oluşturucu Kalıplar) kategorisine giren Prototype Design Pattern üzerine konuşacağım.
 Tasarım deseni yaklaşımlarından Prototype Design Pattern sayesinde elimizdeki mevcut nesnelerin prototiplerini oluşturabilmekte, birnevi bu nesnelerin kopyalarını elde edebilmekteyiz. Prototip deseninin tasarlanmasının asıl sebebi, ilgili nesne üzerinden aynı tipte başka bir nesneyi hızlıca üretebilmektir. Haliyle üretimi esnasında maliyetli olabilecek nesneleri(ki burada maliyetten kasıt, parametreli constructer vs. olabilir) var olan nesne üzerinden “new” anahtar sözcüğünü kullanmadan bir şekilde oluşturulmasını sağlayabilmektedir.
@@ -126,11 +128,185 @@ Burada dikkat etmeniz gereken husus, Prototype tasarım desenini uygulayabilmek 
      <br/>
      
    Strateji Tasarım Deseni
+   <br/>
+   <br/>
+   
 Behavioral Patterns(Davranışsal Kalıplar) kategorisine girer
 Bir işlem için birden fazla farklı yöntemlerin uygulanabileceği durumlar mevcuttur. İşte bu tarz durumlarda hangi yöntemin uygulanacağını, hangisinin devreye sokulacağını Strateji Tasarım Deseni ile gerçekleştirebiliyoruz.
-Strateji Tasarım Deseninin Class Diyagramı aşağıdaki gibidir
+Strateji Tasarım Deseninin Class Diyagramı  aşağıdaki gibidir
 <br/>
      <br/>
+     
+     FOTOĞRAFF
+     
+     Şimdi yukarda ki class diyagramını baz alarak bir örnek vererek kodlarla daha iyi anlatmaya çalışağım strateji tasarım deseni
+Diyagramda da gördüğünüz gibi bir işlemi gerçekleştirebilmenin “StrategyA”, “StrategyB” ve “StrategyC” isimli üç adet yöntemi mevcuttur. İşlemimizi temsil eden Context sınıfı ise aşağı satırlardaki mantıkla Strateji Tasarım Desenini uygulatma gereksinimi doğurmaktadır.
+<br/>
+
+Context, işlemi hangi yöntemle yapacaksa gidip ilgili yöntem adına Context’te güncelleme gerçekleştirmek zorunda kalacak eğer tekrar değişiklik olacaksa tekrar Context içeriğiyle oynamamız gerekecektir. İşte bu durumda, her yöntemi temsil edecek olan, daha doğrusu her yönteme bir şablon, arayüz işlevi görecek olan Strategy arayüzü(interface ya da abstract class olabilir) tanımlanmıştır. Bu arayüz barındırdığı elemanlar olarak tüm görevleri stabilize etmekte ve miras durumunda kasıtlı implement gerçekleştirmekte ve Context sınıfı bu arayüz aracılığıyla işlemlerini gerçekleştirmektedir.
+
+Bu tasarım deseninde temel odak noktamız, Context’in işlemin nasıl yapılacağıyla ilgisini kesmektir.
+Gelin bir araba üretim fabrikasını örneklendirerek projemize pratiklik kazandıralım.
+<br/>
+Üretilecek araba modelimiz “Opel” olsun.
+
+'''C#
+class Opel
+{
+    public Opel(string UretimTipi)
+    {
+        Console.WriteLine($"Opel {UretimTipi} üretilmiştir.");
+    }
+    public string Marka { get; set; }
+    public string Model { get; set; }
+    public int KM { get; set; }}
+'''
+<br/>
+“Seri Üret”, “Özel Yapım Üret” ve “Şipariş Üzerine Üret” olmak üzere üç adet üretim yöntemimiz olsun.
+<br/>
+'''C#
+class SeriUret
+{
+    public Opel Uret()
+    {
+        return new Opel("seri");}}
+    
+
+'''
+<br/>
+<br/>
+<br/>
+'''C#
+class OzelYapimUret
+{
+    public Opel Uret()
+    {
+        return new Opel("özel yapım");
+    }
+}
+'''
+<br/>
+<br/>
+class SiparisUzerineUret
+{
+    public Opel Uret()
+    {
+        return new Opel("sipariş üzerine");}}
+<br/>
+<br/>
+Şimdi Strateji Tasarım Deseni olmaksızın araçlarımızı ürettirelim.
+<br/>
+<br/>
+
+'''C#
+class Uretici
+{
+    public Uretici()
+    {
+        SeriUret sUret = new SeriUret();
+        sUret.Uret();}}
+'''
+<br/>
+<br/>
+Gördüğünüz gibi manuel bir vaziyette “SeriUret” yöntemiyle aracımız üretilmiştir.
+Çalıştıralım…
+
+<br/>
+<br/>
+'''C#
+static void Main(string[] args)
+{
+    Uretici uret = new Uretici();
+    Console.Read();}
+'''
+
+<br/>
+Peki! Şimdi işlemimizi “SeriUret” yöntemiyle değil “SiparisUzerineUret” isimli yöntemle gerçekleştirmek istiyorsam gidip “Uretici” sınıfının içeriğini aşağıdaki gibi değiştirmem lazım.
+'''C#
+
+class Uretici
+{
+    public Uretici()
+    {
+        SiparisUzerineUret suUret = new SiparisUzerineUret();
+        suUret.Uret();
+    }}
+'''
+
+Gördüğünüz gibi, ben ne zaman farklı bir yönteme geçmeye çalışsam bu “Uretici” sınıfını zırt pırt değiştirmekle mükellef olacağım için burada Strategy Design Pattern’i araya sokuyoruz.
+“Strategy” isimli abstract classı(yahut interfacede olabilir) hazırlıyorum.
+
+<br/>
+<br/>
+
+'''C#
+abstract class Strategy
+{
+    public abstract Opel Uret();}
+'''
+<br/>
+Tüm yöntemlerimi bu soyut arayüzden türetiyorum.
+
+'''C#
+class SeriUret : Strategy
+{
+    public override Opel Uret()
+    {
+        return new Opel("seri");}}
+    
+class OzelYapimUret : Strategy
+{
+    public override Opel Uret()
+    {
+        return new Opel("özel yapım");}}
+    
+class SiparisUzerineUret : Strategy
+{
+    public override Opel Uret()
+    {
+        return new Opel("sipariş üzerine");}}
+
+
+
+'''
+<br/>
+<br/>
+
+“Uretici” sınıfını aşağıdaki gibi güncelliyorum.
+
+<br/>
+'''C#
+
+class Uretici
+{
+    public Uretici(Strategy Yontem){
+    Yontem.Uret();}}
+
+
+
+
+'''
+<br/>
+Dikkat ederseniz eğer “Uretici” sınıfının yani Context’imizin işi nasıl gerçekleştireceğiyle ilgisi kesilerek, yapılacak işlem Client’tan gönderilerek Strategy şablon tipinde elde edilerek işlenmektedir.
+Kullanım olarak aşağıdaki kod bloğunu inceleyeniz.
+
+<br/><br/><br/>
+'''C#
+
+static void Main(string[] args)
+{
+    OzelYapimUret oyUret = new OzelYapimUret();
+    SeriUret sUret = new SeriUret();
+    SiparisUzerineUret suUret = new SiparisUzerineUret();
+    Uretici uret1 = new Uretici(oyUret);
+    Uretici uret2 = new Uretici(sUret);
+    Uretici uret3 = new Uretici(suUret);
+    Console.Read();
+}
+
+
+
+'''
      
 
 
