@@ -136,7 +136,10 @@ Strateji Tasarım Deseninin Class Diyagramı  aşağıdaki gibidir
 <br/>
      <br/>
      
-     FOTOĞRAFF
+     <p align="center">
+  <img src="your_relative_path_here" width="350" title="hover text">
+  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
+</p>
      
      Şimdi yukarda ki class diyagramını baz alarak bir örnek vererek kodlarla daha iyi anlatmaya çalışağım strateji tasarım deseni
 Diyagramda da gördüğünüz gibi bir işlemi gerçekleştirebilmenin “StrategyA”, “StrategyB” ve “StrategyC” isimli üç adet yöntemi mevcuttur. İşlemimizi temsil eden Context sınıfı ise aşağı satırlardaki mantıkla Strateji Tasarım Desenini uygulatma gereksinimi doğurmaktadır.
