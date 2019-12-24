@@ -23,19 +23,23 @@ Prototip Tasarım Deseni uygularken aşağıdaki diyagram mantığında hareket 
 <br/>
 Yukarıdaki diyagramda Prototip bir abstract class yahut interface yapısı olabilir. İçerisinde kendisinden miras alınan sınıfa zorla uygulatacağı Clone metodu mevcuttur. İlgili abstract class veya interface yapımızdan türeyecek olan sınıflarımızdaki Clone metodu sayesinde maliyetsiz bir üretim gerçekleştirebileceğiz.
 
-Yani bu diyagramı net bir şekilde izah etmemiz gerekirse eğer, Prototype Design Pattern’de üç temel yapı bulunmaktadır. Bu yapılara aşağıda değinilmiştir.
+Yani bu diyagramı net bir şekilde izah etmemiz gerekirse eğer, Prototype Design Pattern’de üç temel yapı bulunmaktadır. Bu yapılara aşağıda değinilmiştir.<br/>
 ⦁	Soyut Sınıf
 Yeni nesnelerin kopyalanmasını sağlayan ve bu işlem için Clone metodunu barındıran bir sınıftır. abstract class yahut interface olarak tasarlanabilir.
+<br/>
+
 ⦁	Somut Prototip Nesneleri
 Soyut sınıfı uygulayacak olan ve projede herhangi bir amaç için kullanılacak olan nesnelerdir. Yani Prototype Design Pattern’i uygulayacağımız projedeki sınıflarımızdır.
+<br/>
 ⦁	İstemci(Client) Uygulama
 Bunu talebi oluşturacak ve deseni kullanacak katman olarak tanımlayabiliriz.
+<br/>
 
 Şimdi pratikte bir örneklendirme yapalım.
 Örneğimizde amacımız bir oyun  projesinde  oyunlarımızı prototip tasarım desenini  uygulayarak  üretmektir
 <br/>
 <br/>
-'''Csharp
+'''C
 class Oyun
 {
     public int OyunID { get; set; }
@@ -56,19 +60,20 @@ class Oyun
 Gördüğünüz gibi yukarıda “Oyun” sınıfımızı tanımlamış bulunmaktayız ve bu sınıftan parametreli constructer ile nesne yaratılmaktadır. İşte maliyetten bahsettiğimiz durum budur ki, ben bir “Oyun” nesnesi yaratmaya çalıştığımda new Oyun(3,”Oyun Adı”,”Oyun Türü”,true) gibi bir parametrik kod zorunluluğu getirmektedir. Haliyle kodsal maliyet bu sınıfın new keywordü ile nesne üretiminde arttırılmıştır.
 <br/>
 <br/>
-#C#
+'''C
 abstract class PrototypeOyun
 {
     public abstract PrototypeOyun Clone();
 }
-#C#
+'''
+
 <br/>
 <br/>
 Soyut sınıfımız tanımlanarak içine gene aynı tipte dönen Clone metodu eklenmiştir. “Oyun” sınıfımızı bu soyut sınıftan türettiğimiz zaman, ilgili “Oyun” nesnesini Clone metodu ile kopyalayacak ve çok biçimlilik ile “PrototypeOyun” tipinde bir referansa atayabileceğiz.
 
 <br/>
 <br/>
-'''C#
+'''C
 
 class Oyun : PrototypeOyun
 {
@@ -95,8 +100,10 @@ Yukarıdaki kod bloğunu incelerseniz eğer soyut sınıfımızdan türetilen �
 
 <br/>
 <br/>
-   '''C#
    
+  
+   
+
 static void Main(string[] args)
 {
     Oyun o1 = new Oyun(3, "Oyun Adı", "Oyun Türü", true);
@@ -150,7 +157,7 @@ Gelin bir araba üretim fabrikasını örneklendirerek projemize pratiklik kazan
 <br/>
 Üretilecek araba modelimiz “Opel” olsun.
 
-'''C#
+'''C
 class Opel
 {
     public Opel(string UretimTipi)
@@ -164,7 +171,7 @@ class Opel
 <br/>
 “Seri Üret”, “Özel Yapım Üret” ve “Şipariş Üzerine Üret” olmak üzere üç adet üretim yöntemimiz olsun.
 <br/>
-'''C#
+'''C
 class SeriUret
 {
     public Opel Uret()
@@ -176,7 +183,7 @@ class SeriUret
 <br/>
 <br/>
 <br/>
-'''C#
+'''C
 class OzelYapimUret
 {
     public Opel Uret()
@@ -198,7 +205,7 @@ class SiparisUzerineUret
 <br/>
 <br/>
 
-'''C#
+'''C
 class Uretici
 {
     public Uretici()
@@ -213,7 +220,7 @@ Gördüğünüz gibi manuel bir vaziyette “SeriUret” yöntemiyle aracımız 
 
 <br/>
 <br/>
-'''C#
+'''C
 static void Main(string[] args)
 {
     Uretici uret = new Uretici();
@@ -222,7 +229,7 @@ static void Main(string[] args)
 
 <br/>
 Peki! Şimdi işlemimizi “SeriUret” yöntemiyle değil “SiparisUzerineUret” isimli yöntemle gerçekleştirmek istiyorsam gidip “Uretici” sınıfının içeriğini aşağıdaki gibi değiştirmem lazım.
-'''C#
+'''C
 
 class Uretici
 {
@@ -239,7 +246,7 @@ Gördüğünüz gibi, ben ne zaman farklı bir yönteme geçmeye çalışsam bu 
 <br/>
 <br/>
 
-'''C#
+'''C
 abstract class Strategy
 {
     public abstract Opel Uret();}
@@ -247,7 +254,7 @@ abstract class Strategy
 <br/>
 Tüm yöntemlerimi bu soyut arayüzden türetiyorum.
 
-'''C#
+'''C
 class SeriUret : Strategy
 {
     public override Opel Uret()
@@ -275,7 +282,7 @@ class SiparisUzerineUret : Strategy
 “Uretici” sınıfını aşağıdaki gibi güncelliyorum.
 
 <br/>
-'''C#
+'''C
 
 class Uretici
 {
@@ -291,7 +298,7 @@ Dikkat ederseniz eğer “Uretici” sınıfının yani Context’imizin işi na
 Kullanım olarak aşağıdaki kod bloğunu inceleyeniz.
 
 <br/><br/><br/>
-'''C#
+'''C
 
 static void Main(string[] args)
 {
