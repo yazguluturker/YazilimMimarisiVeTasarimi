@@ -135,12 +135,11 @@ Bir işlem için birden fazla farklı yöntemlerin uygulanabileceği durumlar me
 Strateji Tasarım Deseninin Class Diyagramı  aşağıdaki gibidir
 <br/>
      <br/>
-     
-     ![strateji](https://user-images.githubusercontent.com/34074096/71424491-2c1f6080-26a3-11ea-896c-5dee03c8c1c9.png)
+    
    
 
-     
-     Şimdi yukarda ki class diyagramını baz alarak bir örnek vererek kodlarla daha iyi anlatmaya çalışağım strateji tasarım deseni
+   <br/>
+   <br/>
 Diyagramda da gördüğünüz gibi bir işlemi gerçekleştirebilmenin “StrategyA”, “StrategyB” ve “StrategyC” isimli üç adet yöntemi mevcuttur. İşlemimizi temsil eden Context sınıfı ise aşağı satırlardaki mantıkla Strateji Tasarım Desenini uygulatma gereksinimi doğurmaktadır.
 <br/>
 
