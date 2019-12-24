@@ -136,7 +136,7 @@ Strateji Tasarım Deseninin Class Diyagramı  aşağıdaki gibidir
 <br/>
      <br/>
     
-   
+   ![strateji](https://user-images.githubusercontent.com/34074096/71424491-2c1f6080-26a3-11ea-896c-5dee03c8c1c9.png)
 
    <br/>
    <br/>
